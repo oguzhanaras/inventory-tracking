@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block title %}Ürün Ekle{% endblock %}
+
+{% block content %}
+<h1>Yeni Ürün Ekle</h1>
+
+<form method="post">
+    {% csrf_token %}
+    
+    <div>
+        {{ form.name.label }} {{ form.name }}  <!-- Ürün adı -->
+    </div>
+    <div>
+        {{ form.description.label }} {{ form.description }}  <!-- Ürün açıklaması -->
+    </div>
+    <div>
+        {{ form.price.label }} {{ form.price }}  <!-- Ürün fiyatı -->
+    </div>
+    <div>
+        {{ form.quantity.label }} {{ form.quantity }}  <!-- Ürün miktarı -->
+    </div>
+    
+    <!-- Kategori Seçimi -->
+    <div>
+        <label for="id_category">Kategori:</label>
+        <select name="category" id="id_category">
+            {% for category in categories %}
+                <option value="{{ category.id }}">{{ category }}</option>
+            {% endfor %}
+        </select>
+    </div>
+
+    <button type="submit" class="btn btn-success">Ürünü Ekle</button>
+</form>
+
+<a href="{% url 'inventory:product' %}">Geri Dön</a>
+{% endblock %}

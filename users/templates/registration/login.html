@@ -1,0 +1,21 @@
+{% extends "base.html" %}  <!-- base.html'dan miras al -->
+
+{% block title %}Giriş Yap{% endblock %}  <!-- Başlık bloğu -->
+
+{% block content %}
+    <h1>Giriş Yap</h1>
+    {% if messages %}
+        {% for message in messages %}
+            <div class="alert">{{ message }}</div>
+        {% endfor %}
+    {% endif %}
+
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}  <!-- Formu paragraflar halinde görüntüle -->
+        <button type="submit">Giriş Yap</button>
+    </form>
+    <p>
+        Henüz kaydolmadıysanız, <a href="{% url 'users:register' %}">Kayıt Ol</a>
+    </p>  <!-- Kayıt sayfasına yönlendirme -->
+{% endblock %}

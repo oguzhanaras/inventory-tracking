@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="alert alert-success" role="alert">
+        <h4 class="alert-heading">You have been logged out. Thank you for visiting!</h4>
+        <p>Hope to see you again soon!</p>
+        <hr>
+        <p>Go back to <a href="{% url 'product:index' %}">home page</a>.</p>
+    </div>
+{% endblock content %}

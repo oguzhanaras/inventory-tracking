@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ product.name }} Detayları{% endblock %}
+
+{% block content %}
+<h1>{{ product.name }}</h1>
+<p>Açıklama: {{ product.description }}</p>
+<p>Fiyat: {{ product.price }} TL</p>
+<p>Miktar: {{ product.quantity }}</p>
+<p>Kategori: {{ product.category }}</p>
+<p>Eklenme Tarihi: {{ product.created_at }}</p>
+<a href="{% url 'inventory:edit_product' product.id %}" class="btn btn-warning">Düzenle</a>
+<form method="post" action="{% url 'inventory:delete_product' product.id %}">
+    {% csrf_token %}
+    <button type="submit" class="btn btn-danger">Ürünü Sil</button>
+</form>
+{% endblock %}

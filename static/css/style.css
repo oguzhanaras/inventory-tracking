@@ -1,0 +1,33 @@
+:root {
+    --primary-color: #007BFF; /* Ana renk - canlı mavi */
+    --secondary-color: #6C757D; /* İkincil renk - gri */
+    --background-color: #b7bec5; /* Arka plan rengi - açık gri */
+    --text-color: #343A40; /* Yazı rengi - koyu gri */
+    --header-background: #FFFFFF; /* Başlık arka plan rengi - beyaz */
+    --link-color: #007BFF; /* Bağlantı rengi - mavi */
+    --link-hover-color: #0056b3; /* Bağlantı hover rengi - koyu mavi */
+    --success-color: #28A745; /* Başarı rengi - yeşil */
+    --error-color: #DC3545; /* Hata rengi - kırmızı */
+    --warning-color: #FFC107; /* Uyarı rengi - sarı */
+
+    /* Yazı Tipi ve Boyut Değişkenleri */
+    --font-family: 'Arial', sans-serif; /* Yazı tipi */
+    --font-size: 16px; /* Temel yazı boyutu */
+    --header-font-size: 24px; /* Başlık yazı boyutu */
+    --small-font-size: 14px; /* Küçük yazı boyutu */
+}
+
+/* Genel stil ayarları */
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    margin: 0;
+    font-family: var(--font-family);
+    background-color: var(--background-color);
+    color: var(--text-color);
+}
+
+.wrapper {
+    flex: 1; /* Wrapper alanının esnemesini sağlar */
+}

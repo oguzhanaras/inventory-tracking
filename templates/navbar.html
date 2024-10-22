@@ -1,0 +1,23 @@
+<header>
+    <nav>
+        <div class="logo">
+            <h1>Inventoria</h1>
+        </div>
+        <ul>
+            <li><a href="{% url 'inventory:index' %}">Home</a></li>
+            <li><a href="{% url 'inventory:product' %}">Product</a></li>
+        </ul>
+        <div class="auth-links">
+            {% if user.is_authenticated %}
+                <p>Hoş geldin, {{ user.username }}!</p>
+                <form method="POST" action="{% url 'logout' %}">
+                    {% csrf_token %}
+                    <button type="submit">Logout</button>
+                </form>
+            {% else %}
+                <a href="{% url 'login' %}">Giriş Yap</a>
+                <a href="{% url 'users:register' %}">Kayıt Ol</a>
+            {% endif %}
+        </div>
+    </nav>
+</header>

@@ -1,0 +1,39 @@
+header {
+    background-color: var(--header-background);
+    padding: 15px 20px;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+}
+
+nav ul li {
+    margin: 0 15px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: var(--primary-color);
+    transition: color 0.3s;
+}
+
+nav ul li a:hover {
+    color: var(--link-hover-color);
+}
+
+.auth-links {
+    display: flex;
+    align-items: center;
+}
+
+.auth-links p {
+    margin-right: 15px;
+}
