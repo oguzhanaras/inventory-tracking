@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block title %}Kategoriler{% endblock %}
+
+{% block content %}
+<h1>Kategoriler</h1>
+
+<a href="{% url 'category:create' %}" class="btn btn-primary">Kategori Ekle</a>
+
+{% if categories %}
+    <ul>
+        {% for category in categories %}
+            <li>
+                <h2>{{ category.name }}</h2>
+                <p>Açıklama: {{ category.description }}</p>
+            </li>
+        {% endfor %}
+    </ul>
+{% else %}
+    <p>Henüz kategori yok.</p>
+{% endif %}
+{% endblock content %}

@@ -3,7 +3,7 @@ from .models import Product, Category
 from .forms import ProductForm
 from django.contrib.auth.decorators import login_required
 
-app_name = "inventory"
+
 # Ana sayfa
 def index(request):
     return render(request, 'index.html')

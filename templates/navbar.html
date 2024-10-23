@@ -6,6 +6,7 @@
         <ul>
             <li><a href="{% url 'inventory:index' %}">Home</a></li>
             <li><a href="{% url 'inventory:product' %}">Product</a></li>
+            <li><a href="{% url 'category:list' %}">Category</a></li>
         </ul>
         <div class="auth-links">
             {% if user.is_authenticated %}

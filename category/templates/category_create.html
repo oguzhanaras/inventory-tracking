@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block title %}Kategori Ekle{% endblock %}
+
+{% block content %}
+<h3>kategori ekle</h3>
+<form method="post">
+    {% csrf_token %}
+    
+    <div>
+        {{ form.name.label }} {{ form.name }}  <!-- Ürün adı -->
+    </div>
+    <div>
+        {{ form.description.label }} {{ form.description }}  <!-- Ürün açıklaması -->
+    </div>
+    <button type="submit" class="btn btn-success">Ürünü Ekle</button>
+</form>
+{% endblock content %}
