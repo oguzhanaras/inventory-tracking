@@ -21,11 +21,29 @@ def category_create(request):
         form = CategoryForm()
         categories = Category.objects.all()  # Kategorileri al
         return render(request, 'category_create.html', {'form': form})
+    
+@login_required
+def view_category(request, id):
+    category = get_object_or_404(Category, id=id)
+    return render(request, 'view_category.html', {'category': category})
 
 @login_required
 def category_update(request, id):
-    pass
+
+    category = get_object_or_404(Category, id=id)
+
+    if request.method == 'POST':
+        category.name = request.POST.get('name')
+        category.description = request.POST.get('description')
+        category.save()
+
+        return redirect('category:detail', id=id)
+    
+    return render(request, 'edit_category.html', {'category': category})
 
 @login_required
 def category_delete(request, id):
-    pass
+    category = get_object_or_404(Category, id=id)
+    category.delete()
+
+    return redirect('category:list')

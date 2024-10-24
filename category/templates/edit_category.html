@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block title %}Kategori Gunclle{% endblock %}
+
+{% block content %}
+<form method="post">
+    {% csrf_token %}
+    
+    <div class="form-group">
+        <label for="name">kategori Adı:</label>
+        <input type="text" id="name" name="name" class="form-control" value="{{ category.name }}" required>
+    </div>
+
+    <div class="form-group">
+        <label for="description">Açıklama:</label>
+        <textarea id="description" name="description" class="form-control" rows="4" required>{{ category.description }}</textarea>
+    </div>
+    <button type="submit" class="btn btn-success">kategori güncelle</button>
+</form>
+{% endblock content %}

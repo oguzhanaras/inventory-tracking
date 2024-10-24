@@ -14,6 +14,7 @@
                 <h2>{{ category.name }}</h2>
                 <p>Açıklama: {{ category.description }}</p>
             </li>
+            <a href="{% url 'category:detail' category.id %}" class="btn btn-primary">Detay</a>
         {% endfor %}
     </ul>
 {% else %}

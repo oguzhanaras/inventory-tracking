@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block title %}Kategori Detay{% endblock %}
+
+{% block content %}
+{% if category %}
+<p>{{ category.name }}</p>
+<p>{{ category.description }}</p>
+
+<a href="{% url 'category:update' category.id %}">Düzenle</a>
+
+<form method="post" action="{% url 'category:delete' category.id %}">
+    {% csrf_token %}
+    <button type="submit">Kategoriyi Sil</button>
+</form>
+{% else %}
+<p>kategori bulunamadı</p>
+{% endif %}
+{% endblock content %}
