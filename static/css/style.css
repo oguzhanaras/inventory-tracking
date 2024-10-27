@@ -1,14 +1,14 @@
 :root {
-    --primary-color: #007BFF; /* Ana renk - canlı mavi */
-    --secondary-color: #6C757D; /* İkincil renk - gri */
-    --background-color: #b7bec5; /* Arka plan rengi - açık gri */
-    --text-color: #343A40; /* Yazı rengi - koyu gri */
-    --header-background: #FFFFFF; /* Başlık arka plan rengi - beyaz */
-    --link-color: #007BFF; /* Bağlantı rengi - mavi */
-    --link-hover-color: #0056b3; /* Bağlantı hover rengi - koyu mavi */
-    --success-color: #28A745; /* Başarı rengi - yeşil */
-    --error-color: #DC3545; /* Hata rengi - kırmızı */
-    --warning-color: #FFC107; /* Uyarı rengi - sarı */
+    --primary-color: #5A9BD4; /* Ana renk - pastel mavi */
+    --secondary-color: #B1B3B3; /* İkincil renk - açık gri */
+    --background-color: #F1F3F5; /* Arka plan rengi - çok açık gri */
+    --text-color: #212529; /* Yazı rengi - koyu gri */
+    --header-background: #343A40; /* Başlık arka plan rengi - koyu gri */
+    --link-color: #5A9BD4; /* Bağlantı rengi - pastel mavi */
+    --link-hover-color: #4C8CCB; /* Bağlantı hover rengi - daha koyu pastel mavi */
+    --success-color: #8FD19E; /* Başarı rengi - pastel yeşil */
+    --error-color: #EA6A6A; /* Hata rengi - pastel kırmızı */
+    --warning-color: #FFCA57; /* Uyarı rengi - pastel sarı */
 
     /* Yazı Tipi ve Boyut Değişkenleri */
     --font-family: 'Arial', sans-serif; /* Yazı tipi */
@@ -28,6 +28,8 @@ body {
     color: var(--text-color);
 }
 
+/* Wrapper ayarları */
 .wrapper {
     flex: 1; /* Wrapper alanının esnemesini sağlar */
+    padding: 20px; /* İçerik için boşluk ekle */
 }

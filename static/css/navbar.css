@@ -1,31 +1,39 @@
-header {
+.nav-head {
     background-color: var(--header-background);
-    padding: 15px 20px;
+    position: relative;
+    border-radius: 20px;
 }
 
-nav {
+.nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    padding: 10px 20px;
 }
 
-nav ul {
+.logo h1 {
+    color: var(--text-color);
+}
+
+#nav-list {
+    display: flex;
     list-style: none;
     padding: 0;
-    display: flex;
+    margin: 0;
 }
 
-nav ul li {
+#nav-list li {
     margin: 0 15px;
 }
 
-nav ul li a {
+#nav-list a {
+    color: var(--link-color);
     text-decoration: none;
-    color: var(--primary-color);
+    font-size: var(--font-size);
     transition: color 0.3s;
 }
 
-nav ul li a:hover {
+#nav-list a:hover {
     color: var(--link-hover-color);
 }
 
@@ -34,6 +42,48 @@ nav ul li a:hover {
     align-items: center;
 }
 
-.auth-links p {
-    margin-right: 15px;
+.auth-links p, .auth-links button {
+    color: var(--link-color);
+    margin-left: 10px;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+/* Hamburger menü stili */
+.menu-toggle {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+}
+
+.menu-toggle .bar {
+    height: 3px;
+    width: 25px;
+    background-color: var(--text-color);
+    margin: 4px 0;
+    transition: 0.4s;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    #nav-list {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 60px; /* Menü açılma yüksekliği */
+        left: 0;
+        right: 0;
+        background-color: var(--header-background);
+        width: 100%;
+        padding: 10px 0;
+    }
+
+    #nav-list.active {
+        display: flex;
+    }
+
+    .menu-toggle {
+        display: flex;
+    }
 }

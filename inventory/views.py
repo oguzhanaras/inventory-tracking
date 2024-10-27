@@ -42,7 +42,8 @@ def edit_product(request, id):
         # Form verilerini güncelle
         product.name = request.POST['name']
         product.description = request.POST['description']
-        product.price = request.POST['price']
+        product.cost_price = request.POST['cost_price']
+        product.sale_price = request.POST['sale_price']
         product.quantity = request.POST['quantity']
         product.category_id = request.POST['category']
         

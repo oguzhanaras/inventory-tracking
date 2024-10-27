@@ -1,41 +1,29 @@
 footer {
-    background-color: var(--background-color);
-    padding: 20px;
-    text-align: center;
-    color: var(--text-color);
+    background-color: var(--secondary-color);
+    color: white; /* Yazı rengi */
+    text-align: center; /* Ortala */
+    padding: 10px 0; /* İçerik için boşluk ekle */
 }
 
 .footer-content {
     display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.footer-links {
-    margin-bottom: 10px;
+    justify-content: space-between; /* İçerikleri ayır */
+    align-items: center; /* Dikey hizala */
+    padding: 0 20px; /* İçerik için boşluk ekle */
 }
 
 .footer-links ul {
-    list-style: none;
-    padding: 0;
-    display: flex;
+    list-style-type: none; /* Noktaları kaldır */
+    padding: 0; /* Padding sıfırla */
+    margin: 0; /* Margin sıfırla */
+    display: flex; /* Menü elemanlarını yan yana diz */
 }
 
-.footer-links ul li {
-    margin: 0 15px;
+.footer-links li {
+    margin: 0 10px; /* Elemanlar arasında boşluk */
 }
 
-.footer-links ul li a {
-    text-decoration: none;
-    color: var(--primary-color);
-    transition: color 0.3s;
-}
-
-.footer-links ul li a:hover {
-    color: var(--link-hover-color);
-}
-
-.footer-info p {
-    margin: 0;
-    font-size: var(--small-font-size);
+.footer-links a {
+    color: white; /* Bağlantı rengi */
+    text-decoration: none; /* Alt çizgiyi kaldır */
 }

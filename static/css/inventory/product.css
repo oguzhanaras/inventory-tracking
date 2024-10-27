@@ -1,0 +1,101 @@
+/* Başlık stili */
+.header {
+    background-color: var(--header-background);
+    padding: 20px;
+    text-align: center;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+.page-title {
+    color: var(--primary-color);
+    font-size: var(--header-font-size);
+    margin: 0;
+}
+
+/* Buton stil ayarları */
+.btn {
+    display: inline-block;
+    padding: 12px 24px;
+    background-color: var(--primary-color);
+    color: #fff;
+    border: none;
+    border-radius: 25px;
+    text-decoration: none;
+    transition: background-color 0.3s, transform 0.2s;
+    margin: 10px 0;
+}
+
+.btn:hover {
+    background-color: var(--link-hover-color);
+    transform: translateY(-3px);
+}
+
+/* Ürün listesi */
+.product-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+/* Ürün kartı stil ayarları */
+.product-card {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s;
+    position: relative;
+    overflow: hidden;
+}
+
+.product-card:hover {
+    transform: scale(1.02);
+}
+
+/* Ürün resmi stili */
+.product-image {
+    height: 150px;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.product-image img {
+    max-height: 100%;
+    max-width: 100%;
+    object-fit: cover;
+}
+
+/* Ürün adı ve açıklama stili */
+.product-name {
+    font-size: 18px;
+    color: var(--text-color);
+    margin: 0 0 10px;
+}
+
+.product-description {
+    color: var(--secondary-color);
+    margin-bottom: 15px;
+}
+
+/* No products message */
+.no-products {
+    text-align: center;
+    font-size: var(--small-font-size);
+    color: var(--secondary-color);
+}
+
+/* Mobil uyumluluk */
+@media (max-width: 600px) {
+    .btn {
+        width: 100%;
+        text-align: center;
+    }
+
+    .product-list {
+        grid-template-columns: 1fr; /* Tek sütun görünümü */
+    }
+}

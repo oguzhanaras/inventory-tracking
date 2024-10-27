@@ -1,24 +1,31 @@
-<header>
-    <nav>
+<header class="nav-head">
+    <nav class="nav">
         <div class="logo">
             <h1>Inventoria</h1>
         </div>
-        <ul>
-            <li><a href="{% url 'inventory:index' %}">Home</a></li>
-            <li><a href="{% url 'inventory:product' %}">Product</a></li>
-            <li><a href="{% url 'category:list' %}">Category</a></li>
-        </ul>
-        <div class="auth-links">
-            {% if user.is_authenticated %}
-                <p>Hoş geldin, {{ user.username }}!</p>
-                <form method="POST" action="{% url 'logout' %}">
-                    {% csrf_token %}
-                    <button type="submit">Logout</button>
-                </form>
-            {% else %}
-                <a href="{% url 'login' %}">Giriş Yap</a>
-                <a href="{% url 'users:register' %}">Kayıt Ol</a>
-            {% endif %}
+        <div class="menu-toggle" id="mobile-menu">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
         </div>
+        <ul id="nav-list">
+            <li><a href="{% url 'inventory:index' %}">Anasayfa</a></li>
+            <li><a href="{% url 'inventory:product' %}">Ürünler</a></li>
+            <li><a href="{% url 'category:list' %}">Kategoriler</a></li>
+            <li><a href="{% url 'sales:sale_list' %}">Satışlar</a></li>
+            <li><a href="{% url 'analysis:user_analysis' %}">Analiz</a></li>
+            <li class="auth-links">
+                {% if user.is_authenticated %}
+                    <p>Hoş geldin, {{ user.username }}!</p>
+                    <form method="POST" action="{% url 'logout' %}">
+                        {% csrf_token %}
+                        <button type="submit">Çıkış Yap</button>
+                    </form>
+                {% else %}
+                    <a href="{% url 'login' %}">Giriş Yap</a>
+                    <a href="{% url 'users:register' %}">Kayıt Ol</a>
+                {% endif %}
+            </li>
+        </ul>
     </nav>
 </header>

@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% block title %}
+make sale
+{% endblock title %}
+
+{% block content %}
+<form method="post" action="{% url 'sales:create_sale' %}">
+    {% csrf_token %}
+    <h2>Ürün Satışı Yap</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Ürün Adı</th>
+                <th>Fiyat</th>
+                <th>Miktar</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for product in products %}
+            <tr>
+                <td>{{ product.name }}</td>
+                <td>{{ product.sale_price }}</td>
+                <td>
+                    <input type="number" name="quantities" min="0" placeholder="Miktar" value="0">
+                    <input type="hidden" name="products" value="{{ product.id }}">
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <button type="submit">Satış Yap</button>
+</form>
+{% endblock content %}
+

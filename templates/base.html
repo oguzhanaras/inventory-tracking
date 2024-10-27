@@ -1,4 +1,4 @@
-{% load static %} <!-- static etiketini yükleyin -->
+{% load static %}
 <!DOCTYPE html>
 <html lang="tr">
 <head>
@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="{% static 'css/style.css' %}"> <!-- Genel stil dosyası -->
     <link rel="stylesheet" href="{% static 'css/navbar.css' %}"> <!-- Navbar stil dosyası -->
     <link rel="stylesheet" href="{% static 'css/footer.css' %}"> <!-- Footer stil dosyası -->
+    {% block custom_css %}{% endblock custom_css %}
 </head>
 <body>
     <div class="wrapper">
@@ -18,5 +19,8 @@
         </main>
     </div>
     {% include "footer.html" %}
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="{% static 'js/script.js' %}"></script> <!-- Genel JS dosyası -->
+    {% block custom_script %}{% endblock custom_script %}
 </body>
 </html>

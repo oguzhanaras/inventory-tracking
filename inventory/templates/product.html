@@ -1,27 +1,36 @@
 {% extends 'base.html' %}
-
+{% load static %}
 {% block title %}Ürünler{% endblock %}
 
+{% block custom_css %}
+<link rel="stylesheet" href="{% static 'css/inventory/product.css' %}">
+{% endblock custom_css %}
+
 {% block content %}
-<h2>Ürünler</h2>
+
 
 <a href="{% url 'inventory:create_product' %}" class="btn btn-primary">Ürün Ekle</a> <!-- Ürün Ekle butonu -->
 
-{% if products %}
-    <ul>
+<div class="product-list">
+    {% if products %}
         {% for product in products %}
-            <li>
-                <h2>{{ product.name }}</h2>
-                <p>Açıklama: {{ product.description }}</p>
-                <p>Fiyat: {{ product.price }} TL</p>
-                <p>Miktar: {{ product.quantity }}</p>
-                <p>Kategori: {{ product.category }}</p>
-                <p>Eklenme Tarihi: {{ product.created_at }}</p>
-                <a href="{% url 'inventory:view_product' product.id %}">detay</a>
-            </li>
+            <div class="product-card">
+                <div class="product-image">
+                    <!-- Placeholder for product image -->
+                    <img src="{% static 'images/product-placeholder.png' %}" alt="{{ product.name }}">
+                </div>
+                <h2 class="product-name">{{ product.name }}</h2>
+                <p class="product-description">Açıklama: {{ product.description }}</p>
+                <p><strong>Maliyet Fiyatı:</strong> {{ product.cost_price }} TL</p>
+                <p><strong>Satış Fiyatı:</strong> {{ product.sale_price }} TL</p>
+                <p><strong>Miktar:</strong> {{ product.quantity }}</p>
+                <p><strong>Kategori:</strong> {{ product.category }}</p>
+                <p><strong>Eklenme Tarihi:</strong> {{ product.created_at }}</p>
+                <a href="{% url 'inventory:view_product' product.id %}" class="btn btn-secondary">Detay</a>
+            </div>
         {% endfor %}
-    </ul>
-{% else %}
-    <p>Henüz ürün eklemediniz.</p>
-{% endif %}
+    {% else %}
+        <p class="no-products">Henüz ürün eklemediniz.</p>
+    {% endif %}
+</div>
 {% endblock %}

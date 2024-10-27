@@ -9,4 +9,6 @@ urlpatterns = [
     path('login/', auth_views.LoginView.as_view(template_name='registration/login.html'), name='login'),
     path('logout/', auth_views.LogoutView.as_view(template_name='registration/logged_out.html'), name='logout'),
     path('users/', include('users.urls', namespace='users')),
+    path('sale/', include('sale.urls', namespace='sale')),
+    path('analysis/', include('analysis.urls')),
 ]
