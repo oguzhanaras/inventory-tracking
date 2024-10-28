@@ -1,23 +1,29 @@
 {% extends 'base.html' %}
-
+{% load static %}
 {% block title %}Kategoriler{% endblock %}
 
+{% block custom_css %}
+<link rel="stylesheet" href="{% static 'css/category/category_list.css' %}">
+{% endblock custom_css %}
+
 {% block content %}
-<h1>Kategoriler</h1>
+<div class="category-page-container">
+    <h1>Kategoriler</h1>
 
-<a href="{% url 'category:create' %}" class="btn btn-primary">Kategori Ekle</a>
+    <a href="{% url 'category:create' %}" class="btn btn-primary">Kategori Ekle</a>
 
-{% if categories %}
-    <ul>
-        {% for category in categories %}
-            <li>
-                <h2>{{ category.name }}</h2>
-                <p>Açıklama: {{ category.description }}</p>
-            </li>
-            <a href="{% url 'category:detail' category.id %}" class="btn btn-primary">Detay</a>
-        {% endfor %}
-    </ul>
-{% else %}
-    <p>Henüz kategori yok.</p>
-{% endif %}
+    {% if categories %}
+        <ul>
+            {% for category in categories %}
+                <li>
+                    <h2>{{ category.name }}</h2>
+                    <p>Açıklama: {{ category.description }}</p>
+                    <a href="{% url 'category:detail' category.id %}" class="btn btn-primary">Detay</a>
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p class="no-category">Henüz kategori yok.</p>
+    {% endif %}
+</div>
 {% endblock content %}

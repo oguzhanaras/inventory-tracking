@@ -1,29 +1,55 @@
+/* Footer Genel Ayarları */
 footer {
-    background-color: var(--secondary-color);
-    color: white; /* Yazı rengi */
-    text-align: center; /* Ortala */
-    padding: 10px 0; /* İçerik için boşluk ekle */
+    background-color: var(--card-background-color); /* Beyaz arka plan */
+    color: var(--text-color); /* Koyu metin rengi */
+    padding: 20px 0;
+    text-align: center;
+    border-top: 3px solid var(--primary-color); /* Kırmızı üst çizgi */
 }
 
 .footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
     display: flex;
-    justify-content: space-between; /* İçerikleri ayır */
-    align-items: center; /* Dikey hizala */
-    padding: 0 20px; /* İçerik için boşluk ekle */
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
 }
 
+/* Footer Bağlantı ve Bilgi */
 .footer-links ul {
-    list-style-type: none; /* Noktaları kaldır */
-    padding: 0; /* Padding sıfırla */
-    margin: 0; /* Margin sıfırla */
-    display: flex; /* Menü elemanlarını yan yana diz */
+    list-style: none;
+    padding: 0;
+    display: flex;
+    gap: 20px;
 }
 
-.footer-links li {
-    margin: 0 10px; /* Elemanlar arasında boşluk */
+.footer-links ul li a {
+    color: var(--text-color);
+    text-decoration: none;
+    font-size: 1rem;
+    transition: color 0.3s ease;
+    font-weight: 500;
 }
 
-.footer-links a {
-    color: white; /* Bağlantı rengi */
-    text-decoration: none; /* Alt çizgiyi kaldır */
+.footer-links ul li a:hover {
+    color: var(--primary-color); /* Hover rengini kırmızı yap */
+}
+
+.footer-info p {
+    font-size: 0.9rem;
+    color: var(--text-color);
+    margin-top: 10px;
+}
+
+/* Küçük Ekranlar için Responsive Ayar */
+@media (max-width: 768px) {
+    .footer-content {
+        flex-direction: column;
+        text-align: center;
+    }
+    .footer-links ul {
+        flex-direction: column;
+        gap: 10px;
+    }
 }

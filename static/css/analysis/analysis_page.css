@@ -1,0 +1,56 @@
+/* Analiz Sayfası Genel Konteyner */
+.analysis-page-container {
+    max-width: 1400px;
+    margin: 30px auto;
+    padding: 20px;
+    background-color: var(--card-background-color);
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    font-family: Arial, sans-serif;
+}
+
+/* Başlıklar */
+.analysis-page-container h1, .analysis-page-container h2 {
+    color: var(--primary-color);
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.analysis-page-container h1 {
+    font-size: 2rem;
+}
+
+.analysis-page-container h2 {
+    font-size: 1.6rem;
+    margin-top: 30px;
+}
+
+/* Bilgi Kartları */
+.analysis-page-container p {
+    font-size: 1rem;
+    color: var(--text-color);
+    margin: 8px 0;
+}
+
+/* Ürün Listesi */
+.analysis-page-container ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0 0 20px;
+}
+
+.analysis-page-container ul li {
+    margin: 8px 0;
+    font-size: 1rem;
+    color: var(--secondary-color);
+}
+
+/* Grafikler */
+.analysis-page-container canvas {
+    max-width: 600px;
+    height: 400px;
+    margin: 20px auto;
+    display: block;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}

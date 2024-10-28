@@ -1,34 +1,38 @@
 {% extends "base.html" %}
-{% block title %}
-make sale
-{% endblock title %}
+{% load static %}
+{% block title %}make sale{% endblock title %}
+
+{% block custom_css %}
+<link rel="stylesheet" href="{% static 'css/sale/make_sale.css' %}">
+{% endblock custom_css %}
 
 {% block content %}
-<form method="post" action="{% url 'sales:create_sale' %}">
-    {% csrf_token %}
+<div class="make-sale-container">
     <h2>Ürün Satışı Yap</h2>
-    <table>
-        <thead>
-            <tr>
-                <th>Ürün Adı</th>
-                <th>Fiyat</th>
-                <th>Miktar</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for product in products %}
-            <tr>
-                <td>{{ product.name }}</td>
-                <td>{{ product.sale_price }}</td>
-                <td>
-                    <input type="number" name="quantities" min="0" placeholder="Miktar" value="0">
-                    <input type="hidden" name="products" value="{{ product.id }}">
-                </td>
-            </tr>
-            {% endfor %}
-        </tbody>
-    </table>
-    <button type="submit">Satış Yap</button>
-</form>
+    <form method="post" action="{% url 'sales:create_sale' %}">
+        {% csrf_token %}
+        <table>
+            <thead>
+                <tr>
+                    <th>Ürün Adı</th>
+                    <th>Fiyat</th>
+                    <th>Miktar</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for product in products %}
+                <tr>
+                    <td>{{ product.name }}</td>
+                    <td>{{ product.sale_price }} TL</td>
+                    <td>
+                        <input type="number" name="quantities" min="0" placeholder="Miktar" value="0">
+                        <input type="hidden" name="products" value="{{ product.id }}">
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <button type="submit">Satış Yap</button>
+    </form>
+</div>
 {% endblock content %}
-

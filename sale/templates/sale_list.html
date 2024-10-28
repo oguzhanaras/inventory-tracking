@@ -1,35 +1,38 @@
 {% extends "base.html" %}
-
 {% load custom_filters %}
+{% load static %}
+{% block title %}Satışlar{% endblock title %}
 
-{% block title %}
-Satışlar
-{% endblock title %}
+{% block custom_css %}
+<link rel="stylesheet" href="{% static 'css/sale/sales_page.css' %}">
+{% endblock custom_css %}
 
 {% block content %}
-<h1>Satışlar</h1>
-<a href="{% url 'sales:create_sale' %}">Satış Yap</a>
+<div class="sales-page-container">
+    <h1>Satışlar</h1>
+    <a href="{% url 'sales:create_sale' %}">Satış Yap</a>
 
-{% if sales %}
-    <h2>Mevcut Satışlar</h2>
-    <ul>
-        {% for sale in sales %}
-            <li>
-                Satış Tarihi: {{ sale.sale_date }} - Toplam Fiyat: {{ sale.total_price|floatformat:2 }}
-                <ul>
-                    {% for item in sale.items.all %}
-                        <li>
-                            {{ item.quantity }} x {{ item.product.name }} - 
-                            
-                            Birim Fiyat: {{ item.sale_price|unit_price:item.quantity|floatformat:2 }}
-                            (Toplam: {{ item.sale_price|floatformat:2 }} )
-                        </li>
-                    {% endfor %}
-                </ul>
-            </li>
-        {% endfor %}
-    </ul>
-{% else %}
-    <p>Satış yok.</p>
-{% endif %}
+    {% if sales %}
+        <h2>Mevcut Satışlar</h2>
+        <ul>
+            {% for sale in sales %}
+                <li>
+                    <strong>Satış Tarihi:</strong> {{ sale.sale_date }} - 
+                    <strong>Toplam Fiyat:</strong> {{ sale.total_price|floatformat:2 }} TL
+                    <ul>
+                        {% for item in sale.items.all %}
+                            <li>
+                                {{ item.quantity }} x {{ item.product.name }} - 
+                                Birim Fiyat: {{ item.sale_price|unit_price:item.quantity|floatformat:2 }} TL
+                                (Toplam: {{ item.sale_price|floatformat:2 }} TL)
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>Satış yok.</p>
+    {% endif %}
+</div>
 {% endblock content %}

@@ -1,0 +1,89 @@
+/* Ürün Ekleme Sayfası Genel Stili */
+.product-add-container {
+    max-width: 600px;
+    margin: 30px auto;
+    background-color: var(--card-background-color);
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+}
+
+.product-add-container h1 {
+    color: var(--primary-color);
+    font-size: 1.8rem;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* Form Alanı */
+.product-add-container form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.product-add-container form div {
+    display: flex;
+    flex-direction: column;
+}
+
+.product-add-container form label {
+    color: var(--text-color);
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+
+.product-add-container form input[type="text"],
+.product-add-container form input[type="number"],
+.product-add-container form textarea,
+.product-add-container form select {
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid var(--secondary-color);
+    border-radius: 5px;
+    background-color: #f8f9fa;
+    color: var(--text-color);
+    transition: border-color 0.3s;
+}
+
+.product-add-container form input[type="text"]:focus,
+.product-add-container form input[type="number"]:focus,
+.product-add-container form textarea:focus,
+.product-add-container form select:focus {
+    border-color: var(--primary-color);
+    outline: none;
+}
+
+/* Buton Stili */
+.product-add-container .btn-success {
+    display: block;
+    width: 100%;
+    padding: 12px;
+    background-color: var(--primary-color);
+    color: #ffffff;
+    font-size: 1rem;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+    margin-top: 15px;
+}
+
+.product-add-container .btn-success:hover {
+    background-color: var(--link-hover-color);
+    transform: translateY(-3px);
+}
+
+/* Geri Dön Linki */
+.product-add-container a {
+    display: inline-block;
+    margin-top: 10px;
+    color: var(--primary-color);
+    text-decoration: none;
+    font-size: 0.9rem;
+}
+
+.product-add-container a:hover {
+    color: var(--link-hover-color);
+}

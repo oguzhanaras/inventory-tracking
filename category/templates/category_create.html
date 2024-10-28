@@ -1,18 +1,24 @@
 {% extends "base.html" %}
-
+{% load static %}
 {% block title %}Kategori Ekle{% endblock %}
 
+{% block custom_css %}
+<link rel="stylesheet" href="{% static 'css/category/category_add.css' %}">
+{% endblock custom_css %}
+
 {% block content %}
-<h3>kategori ekle</h3>
-<form method="post">
-    {% csrf_token %}
-    
-    <div>
-        {{ form.name.label }} {{ form.name }}  <!-- Ürün adı -->
-    </div>
-    <div>
-        {{ form.description.label }} {{ form.description }}  <!-- Ürün açıklaması -->
-    </div>
-    <button type="submit" class="btn btn-success">Ürünü Ekle</button>
-</form>
+<div class="category-add-container">
+    <h3>Kategori Ekle</h3>
+    <form method="post">
+        {% csrf_token %}
+        
+        <div>
+            {{ form.name.label }} {{ form.name }}  <!-- Kategori adı -->
+        </div>
+        <div>
+            {{ form.description.label }} {{ form.description }}  <!-- Kategori açıklaması -->
+        </div>
+        <button type="submit" class="btn btn-success">Kategori Ekle</button>
+    </form>
+</div>
 {% endblock content %}

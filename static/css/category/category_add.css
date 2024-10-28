@@ -1,0 +1,71 @@
+/* Kategori Ekle Sayfası Genel Stili */
+.category-add-container {
+    max-width: 600px;
+    margin: 30px auto;
+    padding: 25px;
+    background-color: var(--card-background-color);
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+}
+
+.category-add-container h3 {
+    color: var(--primary-color);
+    font-size: 1.6rem;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* Form Alanları */
+.category-add-container form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.category-add-container form div {
+    display: flex;
+    flex-direction: column;
+}
+
+.category-add-container form label {
+    color: var(--text-color);
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+
+.category-add-container form input[type="text"],
+.category-add-container form textarea {
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid var(--secondary-color);
+    border-radius: 5px;
+    background-color: #f8f9fa;
+    color: var(--text-color);
+    transition: border-color 0.3s;
+}
+
+.category-add-container form input[type="text"]:focus,
+.category-add-container form textarea:focus {
+    border-color: var(--primary-color);
+    outline: none;
+}
+
+/* Buton Stili */
+.category-add-container .btn-success {
+    width: 100%;
+    padding: 12px;
+    background-color: var(--primary-color);
+    color: #ffffff;
+    font-size: 1rem;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+    margin-top: 15px;
+}
+
+.category-add-container .btn-success:hover {
+    background-color: var(--link-hover-color);
+    transform: translateY(-3px);
+}

@@ -14,7 +14,6 @@ def user_analysis(request):
     total_revenue = user_sales.aggregate(Sum('total_price'))['total_price__sum'] or 0
 
     # 2. En Çok Satılan Ürün Analizi
-    # En çok satılan ürünleri satış miktarına göre sırala
     top_selling_products = (
         SaleItem.objects
         .filter(sale__user=request.user)
@@ -26,10 +25,15 @@ def user_analysis(request):
     # 3. Stok Tükenme Analizi (Stok Miktarı 10'un altında olan ürünler)
     low_stock_products = user_inventory.filter(quantity__lt=10).values('name', 'quantity')
 
-    # 4. Kar-Zarar Analizi
-    # Kullanıcının envanterindeki ürünlerin toplam maliyetini hesapla
-    total_cost = user_inventory.aggregate(total_cost=Sum(F('cost_price') * F('quantity')))['total_cost'] or 0
-    profit_margin = ((total_revenue - total_cost) / total_revenue) * 100 if total_revenue else 0
+    # 4. Kar-Zarar Analizi: Satılan ürünlerin maliyetini hesapla
+    sold_items_cost = (
+        SaleItem.objects
+        .filter(sale__user=request.user)
+        .aggregate(total_cost=Sum(F('product__cost_price') * F('quantity')))['total_cost'] or 0
+    )
+
+    # Sadece satılan ürünlerin maliyetine göre kar oranı
+    profit_margin = round(((total_revenue - sold_items_cost) / total_revenue) * 100, 2) if total_revenue else 0
 
     # 5. Satışların Kategori Bazında Yüzdesel Dağılımı
     category_distribution = (
@@ -58,10 +62,14 @@ def user_analysis(request):
         month_sales = user_sales.filter(sale_date__month=month)
         monthly_revenue = month_sales.aggregate(Sum('total_price'))['total_price__sum'] or 0
         
-        # Kullanıcının envanterindeki ürünlerin toplam maliyetini hesapla
-        total_cost = user_inventory.aggregate(total_cost=Sum(F('cost_price') * F('quantity')))['total_cost'] or 0
+        # Satılan ürünlerin aylık maliyetini hesapla
+        monthly_cost = (
+            SaleItem.objects
+            .filter(sale__user=request.user, sale__sale_date__month=month)
+            .aggregate(monthly_cost=Sum(F('product__cost_price') * F('quantity')))['monthly_cost'] or 0
+        )
         
-        profit = monthly_revenue - total_cost
+        profit = monthly_revenue - monthly_cost
         monthly_profit_data.append({
             'month': datetime(2000, month, 1).strftime('%B'),  # Ay adı
             'profit': profit
@@ -71,8 +79,8 @@ def user_analysis(request):
     context = {
         'total_sales_count': total_sales_count,
         'total_revenue': total_revenue,
-        'total_cost': total_cost,
-        'profit_margin': profit_margin,
+        'total_cost': sold_items_cost,  # Sadece satılan ürünlerin maliyeti
+        'profit_margin': profit_margin,  # Yuvarlanmış kar oranı
         'top_selling_products': top_selling_products,
         'low_stock_products': low_stock_products,
         'category_distribution': category_distribution,

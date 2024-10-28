@@ -1,0 +1,74 @@
+/* Kategoriler Sayfası Genel Stili */
+.category-page-container {
+    max-width: 800px;
+    margin: 30px auto;
+    padding: 20px;
+    background-color: var(--card-background-color);
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+}
+
+.category-page-container h1 {
+    color: var(--primary-color);
+    font-size: 1.8rem;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* Kategori Listesi */
+.category-page-container ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.category-page-container li {
+    margin-bottom: 20px;
+    padding: 15px;
+    border: 1px solid var(--secondary-color);
+    border-radius: 8px;
+    background-color: #f8f9fa;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.category-page-container h2 {
+    color: var(--text-color);
+    font-size: 1.4rem;
+    margin: 0 0 10px;
+}
+
+.category-page-container p {
+    color: var(--secondary-color);
+    font-size: 1rem;
+    margin: 0;
+}
+
+/* Buton Stili */
+.category-page-container .btn {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 8px 16px;
+    font-size: 0.9rem;
+    border-radius: 5px;
+    text-decoration: none;
+    color: #ffffff;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.category-page-container .btn-primary {
+    background-color: var(--primary-color);
+    border: none;
+}
+
+.category-page-container .btn-primary:hover {
+    background-color: var(--link-hover-color);
+    transform: translateY(-2px);
+}
+
+/* Boş Liste Mesajı */
+.category-page-container .no-category {
+    text-align: center;
+    color: var(--secondary-color);
+    font-size: 1rem;
+    margin-top: 20px;
+}

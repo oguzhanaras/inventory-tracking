@@ -2,11 +2,53 @@ from django.shortcuts import render, redirect, get_object_or_404
 from .models import Product, Category
 from .forms import ProductForm
 from django.contrib.auth.decorators import login_required
+from sale.models import Sale, SaleItem
+from django.db.models import Sum, F
 
 
 # Ana sayfa
 def index(request):
-    return render(request, 'index.html')
+    # 1. Toplam Satış Sayısı ve Toplam Gelir
+    total_sales_count = Sale.objects.filter(user=request.user).count()
+    total_revenue = Sale.objects.filter(user=request.user).aggregate(Sum('total_price'))['total_price__sum'] or 0
+
+    # 2. Toplam Kâr
+    # Satılan ürünlerin maliyeti hesaplanır
+    total_cost = (
+        SaleItem.objects
+        .filter(sale__user=request.user)
+        .annotate(total_cost=F('product__cost_price') * F('quantity'))
+        .aggregate(total_cost=Sum('total_cost'))['total_cost'] or 0
+    )
+    total_profit = total_revenue - total_cost
+
+    # 3. En Çok Satılan Ürün
+    top_selling_product = (
+        SaleItem.objects
+        .filter(sale__user=request.user)
+        .values('product__name')
+        .annotate(total_sold=Sum('quantity'))
+        .order_by('-total_sold')
+        .first()
+    )
+    top_product_name = top_selling_product['product__name'] if top_selling_product else "Yok"
+
+    # 4. Aylık Gelir Verisi (Grafik için)
+    monthly_revenue = []
+    for month in range(1, 13):
+        monthly_sales = Sale.objects.filter(user=request.user, sale_date__month=month)
+        monthly_revenue.append(monthly_sales.aggregate(Sum('total_price'))['total_price__sum'] or 0)
+
+    # Context verilerini tanımla
+    context = {
+        'total_sales_count': total_sales_count,
+        'total_revenue': total_revenue,
+        'total_profit': total_profit,
+        'top_product_name': top_product_name,
+        'monthly_revenue': monthly_revenue,
+    }
+
+    return render(request, 'index.html', context)
 
 @login_required
 def product(request):

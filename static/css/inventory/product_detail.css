@@ -1,0 +1,72 @@
+/* Ürün Detay Kartı */
+.product-details {
+    max-width: 600px;
+    background-color: var(--card-background-color); /* Beyaz arka plan */
+    padding: 25px;
+    margin: 30px auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+    color: var(--text-color); /* Koyu gri metin */
+    font-family: Arial, sans-serif;
+}
+
+/* Başlık Stili */
+.product-details h3 {
+    color: var(--primary-color); /* Mavi vurgu */
+    font-size: 1.6rem;
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+/* Ürün Bilgisi Stili */
+.product-details p {
+    font-size: 1rem;
+    margin: 8px 0;
+    line-height: 1.6;
+    color: var(--text-color);
+}
+
+.product-details p strong {
+    color: var(--secondary-color); /* Hafif gri-mavi ton */
+}
+
+/* Butonlar */
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 1rem;
+    border-radius: 5px;
+    text-decoration: none;
+    color: #ffffff;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.btn-warning {
+    background-color: var(--primary-color); /* Mavi buton */
+    border: none;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.btn-warning:hover {
+    background-color: var(--link-hover-color); /* Açık mavi hover */
+    transform: translateY(-2px);
+}
+
+.btn-danger {
+    background-color: #E63946; /* Kırmızı buton */
+    border: none;
+    transition: background-color 0.3s, transform 0.2s;
+    margin-left: 10px;
+}
+
+.btn-danger:hover {
+    background-color: #D62839; /* Daha koyu kırmızı hover */
+    transform: translateY(-2px);
+}
+
+/* Butonların Yan Yana Görünümü */
+.product-view {
+    display: inline-block;
+    margin-top: 10px;
+}

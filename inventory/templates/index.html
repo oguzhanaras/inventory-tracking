@@ -1,8 +1,51 @@
-{% extends 'base.html' %}
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Ana Sayfa{% endblock title %}
 
-{% block title %}Ana Sayfa{% endblock %}
+{% block custom_css %}
+<link rel="stylesheet" href="{% static 'css/index.css' %}">
+{% endblock custom_css %}
 
 {% block content %}
-<h1>Hoş Geldiniz!</h1>
-<p>Envanter takip uygulamanıza hoş geldiniz.</p>
-{% endblock %}
+<div class="home-page-container">
+    <h1>Hoşgeldiniz, {{ user.username }}!</h1>
+    
+    <!-- Kısa Tanıtım -->
+    <p>Inventoria, envanterinizi kolayca takip edebileceğiniz, satış ve finansal analizlerinizi görüntüleyebileceğiniz kapsamlı bir envanter yönetim uygulamasıdır. Ürünlerinizi düzenleyin, satış performansınızı analiz edin ve karınızı artırın!</p>
+
+    <!-- Özellikler Bölümü -->
+    <div class="features">
+        <div class="feature-card">
+            <h3>Envanter Yönetimi</h3>
+            <p>Ürünlerinizi kolayca ekleyin ve yönetin. Stok seviyelerini ve güncellemeleri takip edin.</p>
+        </div>
+        <div class="feature-card">
+            <h3>Satış Analizleri</h3>
+            <p>Satış performansınızı analiz edin, en çok satılan ürünleri keşfedin ve kâr oranınızı hesaplayın.</p>
+        </div>
+        <div class="feature-card">
+            <h3>Kategori Yönetimi</h3>
+            <p>Ürünlerinizi kategorilere ayırarak daha düzenli bir envanter oluşturun.</p>
+        </div>
+        <div class="feature-card">
+            <h3>Finansal Raporlama</h3>
+            <p>Gelir ve giderlerinizi detaylı olarak raporlayın.</p>
+        </div>
+    </div>
+
+    <!-- Adım Adım Kılavuz -->
+    <h2>Nasıl Kullanılır?</h2>
+    <ul class="usage-steps">
+        <li><strong>1. Adım:</strong> Ürünlerinizi Envantere Ekleyin.</li>
+        <li><strong>2. Adım:</strong> Kategoriler ile ürünlerinizi düzenleyin.</li>
+        <li><strong>3. Adım:</strong> Satış yaparak sonuçları analiz edin.</li>
+    </ul>
+
+    <!-- Hızlı Erişim Butonları -->
+    <div class="quick-links">
+        <a href="{% url 'inventory:create_product' %}" class="btn">Yeni Ürün Ekle</a>
+        <a href="{% url 'sales:create_sale' %}" class="btn">Satış Yap</a>
+        <a href="{% url 'category:list' %}" class="btn">Kategoriler</a>
+    </div>
+</div>
+{% endblock content %}

@@ -1,31 +1,31 @@
 <header class="nav-head">
-    <nav class="nav">
-        <div class="logo">
-            <h1>Inventoria</h1>
-        </div>
-        <div class="menu-toggle" id="mobile-menu">
-            <span class="bar"></span>
-            <span class="bar"></span>
-            <span class="bar"></span>
-        </div>
-        <ul id="nav-list">
-            <li><a href="{% url 'inventory:index' %}">Anasayfa</a></li>
-            <li><a href="{% url 'inventory:product' %}">Ürünler</a></li>
-            <li><a href="{% url 'category:list' %}">Kategoriler</a></li>
-            <li><a href="{% url 'sales:sale_list' %}">Satışlar</a></li>
-            <li><a href="{% url 'analysis:user_analysis' %}">Analiz</a></li>
-            <li class="auth-links">
+    <nav class="navbar">
+        <div class="navbar-container"> <!-- "container" sınıfı "navbar-container" olarak değiştirildi -->
+            <a href="{% url 'inventory:index' %}" class="logo">Inventoria</a>
+            <div class="menu-toggle" id="menu-toggle">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+            <ul id="nav-list" class="nav-list">
+                <li><a href="{% url 'inventory:index' %}">Anasayfa</a></li>
+                <li><a href="{% url 'inventory:product' %}">Ürünler</a></li>
+                <li><a href="{% url 'category:list' %}">Kategoriler</a></li>
+                <li><a href="{% url 'sales:sale_list' %}">Satışlar</a></li>
+                <li><a href="{% url 'analysis:user_analysis' %}">Analiz</a></li>
                 {% if user.is_authenticated %}
-                    <p>Hoş geldin, {{ user.username }}!</p>
-                    <form method="POST" action="{% url 'logout' %}">
-                        {% csrf_token %}
-                        <button type="submit">Çıkış Yap</button>
-                    </form>
+                    <li class="auth-links">
+                        <span>Hoş geldin, {{ user.username }}!</span>
+                        <form method="POST" action="{% url 'logout' %}">
+                            {% csrf_token %}
+                            <button type="submit" class="logout-button">Çıkış Yap</button>
+                        </form>
+                    </li>
                 {% else %}
-                    <a href="{% url 'login' %}">Giriş Yap</a>
-                    <a href="{% url 'users:register' %}">Kayıt Ol</a>
+                    <li><a href="{% url 'login' %}">Giriş Yap</a></li>
+                    <li><a href="{% url 'users:register' %}">Kayıt Ol</a></li>
                 {% endif %}
-            </li>
-        </ul>
+            </ul>
+        </div>
     </nav>
 </header>

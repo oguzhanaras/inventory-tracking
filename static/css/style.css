@@ -1,35 +1,91 @@
 :root {
-    --primary-color: #5A9BD4; /* Ana renk - pastel mavi */
-    --secondary-color: #B1B3B3; /* İkincil renk - açık gri */
-    --background-color: #F1F3F5; /* Arka plan rengi - çok açık gri */
-    --text-color: #212529; /* Yazı rengi - koyu gri */
-    --header-background: #343A40; /* Başlık arka plan rengi - koyu gri */
-    --link-color: #5A9BD4; /* Bağlantı rengi - pastel mavi */
-    --link-hover-color: #4C8CCB; /* Bağlantı hover rengi - daha koyu pastel mavi */
-    --success-color: #8FD19E; /* Başarı rengi - pastel yeşil */
-    --error-color: #EA6A6A; /* Hata rengi - pastel kırmızı */
-    --warning-color: #FFCA57; /* Uyarı rengi - pastel sarı */
-
-    /* Yazı Tipi ve Boyut Değişkenleri */
-    --font-family: 'Arial', sans-serif; /* Yazı tipi */
-    --font-size: 16px; /* Temel yazı boyutu */
-    --header-font-size: 24px; /* Başlık yazı boyutu */
-    --small-font-size: 14px; /* Küçük yazı boyutu */
+    --primary-color: #7B9ACC; /* Pastel Mavi */
+    --secondary-color: #A3A9B5; /* Açık Gri-Mavi */
+    --background-color: #E9EFF6; /* Daha yumuşak açık gri-mavi */
+    --card-background-color: #FFFFFF; /* Beyaz */
+    --text-color: #4A4A4A; /* Orta Gri */
+    --link-hover-color: #95B9D6; /* Pastel Açık Mavi */
 }
 
-/* Genel stil ayarları */
+/* Genel Sıfırlama ve Kutulama Ayarları */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Genel Yazı ve Arka Plan Ayarları */
 body {
+    font-family: Arial, sans-serif;
+    background-color: var(--background-color); /* Güncellenmiş yumuşak gri-mavi */
+    color: var(--text-color);
+    line-height: 1.6;
     display: flex;
     flex-direction: column;
     min-height: 100vh;
-    margin: 0;
-    font-family: var(--font-family);
-    background-color: var(--background-color);
-    color: var(--text-color);
 }
 
-/* Wrapper ayarları */
+/* Wrapper ayarı */
 .wrapper {
-    flex: 1; /* Wrapper alanının esnemesini sağlar */
-    padding: 20px; /* İçerik için boşluk ekle */
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+/* Ana İçerik Konteyneri */
+main {
+    flex: 1;
+}
+
+.content-container {
+    padding: 20px;
+    max-width: 1200px;
+    margin: 30px auto;
+    background-color: var(--card-background-color);
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05); /* Hafif gölge */
+}
+
+/* Başlıklar */
+h1, h2, h3, h4, h5, h6 {
+    color: var(--text-color);
+    font-weight: 600;
+}
+
+/* Linkler */
+a {
+    color: var(--primary-color);
+    text-decoration: none;
+}
+
+a:hover {
+    color: var(--link-hover-color);
+}
+
+/* Footer Ayarı */
+footer {
+    background-color: var(--secondary-color);
+    color: var(--card-background-color);
+    padding: 10px;
+    text-align: center;
+}
+
+/* Durum Renkleri */
+.success {
+    color: var(--primary-color);
+}
+
+.warning {
+    color: #F4A261; /* Hafif turuncu */
+}
+
+.error {
+    color: #E63946; /* Kırmızı */
+}
+
+/* Responsive Ayar */
+@media (max-width: 768px) {
+    .content-container {
+        padding: 10px;
+    }
 }

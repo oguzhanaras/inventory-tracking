@@ -1,0 +1,78 @@
+/* Ürün Satışı Sayfası Genel Stili */
+.make-sale-container {
+    max-width: 800px;
+    margin: 30px auto;
+    padding: 25px;
+    background-color: var(--card-background-color);
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+    font-family: Arial, sans-serif;
+}
+
+.make-sale-container h2 {
+    color: var(--primary-color);
+    font-size: 1.6rem;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* Tablo Stili */
+.make-sale-container table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+.make-sale-container th, .make-sale-container td {
+    padding: 12px;
+    border: 1px solid var(--secondary-color);
+    text-align: center;
+    font-size: 1rem;
+    color: var(--text-color);
+}
+
+.make-sale-container th {
+    background-color: var(--primary-color);
+    color: #ffffff;
+    font-weight: bold;
+}
+
+.make-sale-container td {
+    background-color: #f8f9fa;
+}
+
+/* Miktar Girişi */
+.make-sale-container input[type="number"] {
+    width: 60px;
+    padding: 5px;
+    font-size: 1rem;
+    border: 1px solid var(--secondary-color);
+    border-radius: 4px;
+    text-align: center;
+    transition: border-color 0.3s;
+}
+
+.make-sale-container input[type="number"]:focus {
+    border-color: var(--primary-color);
+    outline: none;
+}
+
+/* Satış Yap Butonu */
+.make-sale-container button[type="submit"] {
+    display: block;
+    width: 100%;
+    padding: 12px;
+    font-size: 1rem;
+    color: #ffffff;
+    background-color: var(--primary-color);
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.make-sale-container button[type="submit"]:hover {
+    background-color: var(--link-hover-color);
+    transform: translateY(-3px);
+}

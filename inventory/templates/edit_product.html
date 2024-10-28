@@ -1,11 +1,15 @@
 {% extends 'base.html' %}
-
+{% load static %}
 {% block title %}Ürün Düzenle{% endblock %}
+
+{% block custom_css %}
+<link rel="stylesheet" href="{% static 'css/inventory/product_edit.css' %}">
+{% endblock custom_css %}
 
 {% block content %}
 <h1>Ürünü Düzenle: {{ product.name }}</h1>
 
-<form method="post">
+<form method="post" class="edit-product">
     {% csrf_token %}
     
     <div class="form-group">

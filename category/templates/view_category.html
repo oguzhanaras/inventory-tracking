@@ -1,19 +1,26 @@
 {% extends 'base.html' %}
-
+{% load static %}
 {% block title %}Kategori Detay{% endblock %}
 
+{% block custom_css %}
+<link rel="stylesheet" href="{% static 'css/category/category_detail.css' %}">
+{% endblock custom_css %}
+
 {% block content %}
-{% if category %}
-<p>{{ category.name }}</p>
-<p>{{ category.description }}</p>
+<div class="category-detail-container">
+    {% if category %}
+        <h2>Kategori Detayı</h2>
+        <p><strong>Kategori Adı:</strong> {{ category.name }}</p>
+        <p><strong>Açıklama:</strong> {{ category.description }}</p>
 
-<a href="{% url 'category:update' category.id %}">Düzenle</a>
+        <a href="{% url 'category:update' category.id %}" class="btn-edit">Düzenle</a>
 
-<form method="post" action="{% url 'category:delete' category.id %}">
-    {% csrf_token %}
-    <button type="submit">Kategoriyi Sil</button>
-</form>
-{% else %}
-<p>kategori bulunamadı</p>
-{% endif %}
+        <form method="post" action="{% url 'category:delete' category.id %}" style="display: inline;">
+            {% csrf_token %}
+            <button type="submit" class="btn-delete">Kategoriyi Sil</button>
+        </form>
+    {% else %}
+        <p class="not-found">Kategori bulunamadı</p>
+    {% endif %}
+</div>
 {% endblock content %}

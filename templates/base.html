@@ -5,22 +5,36 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}Inventoria{% endblock %}</title>
-    <link rel="stylesheet" href="{% static 'css/style.css' %}"> <!-- Genel stil dosyası -->
-    <link rel="stylesheet" href="{% static 'css/navbar.css' %}"> <!-- Navbar stil dosyası -->
-    <link rel="stylesheet" href="{% static 'css/footer.css' %}"> <!-- Footer stil dosyası -->
+    
+    <!-- Genel Stil Dosyaları -->
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/navbar.css' %}">
+    <link rel="stylesheet" href="{% static 'css/footer.css' %}">
+    
     {% block custom_css %}{% endblock custom_css %}
 </head>
 <body>
     <div class="wrapper">
+        <!-- Navbar -->
         {% include "navbar.html" %}
+        
+        <!-- Ana İçerik -->
         <main>
-            {% block content %}
-            {% endblock %}
+            <div class="content-container">
+                {% block content %}
+                <!-- Sayfaya özgü içerikler buraya gelecek -->
+                {% endblock %}
+            </div>
         </main>
     </div>
+    
+    <!-- Footer -->
     {% include "footer.html" %}
+
+    <!-- Grafik ve Genel JS Dosyaları -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="{% static 'js/script.js' %}"></script> <!-- Genel JS dosyası -->
+    <script src="{% static 'js/script.js' %}"></script>
+    
     {% block custom_script %}{% endblock custom_script %}
 </body>
 </html>

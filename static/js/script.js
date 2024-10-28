@@ -1,9 +1,9 @@
 // navbar -------------
-const menuToggle = document.getElementById('mobile-menu');
-const navList = document.getElementById('nav-list');
+document.addEventListener('DOMContentLoaded', function () {
+    const menuToggle = document.getElementById('menu-toggle');
+    const navList = document.getElementById('nav-list');
 
-menuToggle.addEventListener('click', () => {
-    navList.classList.toggle('active');
+    menuToggle.addEventListener('click', function () {
+        navList.classList.toggle('open');
+    });
 });
-
-

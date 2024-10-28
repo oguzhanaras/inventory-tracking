@@ -1,0 +1,68 @@
+/* Satışlar Sayfası Genel Stili */
+.sales-page-container {
+    max-width: 800px;
+    margin: 30px auto;
+    padding: 25px;
+    background-color: var(--card-background-color);
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+    font-family: Arial, sans-serif;
+}
+
+/* Başlık Stili */
+.sales-page-container h1 {
+    color: var(--primary-color);
+    font-size: 1.8rem;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* Satış Yap Linki */
+.sales-page-container a {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: var(--primary-color);
+    color: #ffffff;
+    text-decoration: none;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.sales-page-container a:hover {
+    background-color: var(--link-hover-color);
+    transform: translateY(-2px);
+}
+
+/* Satış Listesi */
+.sales-page-container ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.sales-page-container ul li {
+    margin-bottom: 20px;
+    padding: 15px;
+    border: 1px solid var(--secondary-color);
+    border-radius: 8px;
+    background-color: #f8f9fa;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.sales-page-container ul li ul {
+    margin-top: 10px;
+    padding-left: 20px;
+}
+
+.sales-page-container ul li ul li {
+    font-size: 0.9rem;
+    color: var(--text-color);
+    margin: 5px 0;
+}
+
+/* Toplam Fiyat ve Satış Tarihi */
+.sales-page-container ul li strong {
+    color: var(--primary-color);
+    font-weight: 600;
+}

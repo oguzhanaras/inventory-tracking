@@ -1,17 +1,23 @@
 {% extends 'base.html' %}
-
+{% load static %}
 {% block title %}{{ product.name }} Detayları{% endblock %}
 
+{% block custom_css %}
+<link rel="stylesheet" href="{% static 'css/inventory/product_detail.css' %}">
+{% endblock custom_css %}
+
 {% block content %}
-<h1>{{ product.name }}</h1>
-<p>Açıklama: {{ product.description }}</p>
-<p>Fiyat: {{ product.price }} TL</p>
-<p>Miktar: {{ product.quantity }}</p>
-<p>Kategori: {{ product.category }}</p>
-<p>Eklenme Tarihi: {{ product.created_at }}</p>
-<a href="{% url 'inventory:edit_product' product.id %}" class="btn btn-warning">Düzenle</a>
-<form method="post" action="{% url 'inventory:delete_product' product.id %}">
-    {% csrf_token %}
-    <button type="submit" class="btn btn-danger">Ürünü Sil</button>
-</form>
+<div class="product-details">
+    <h3>{{ product.name }}</h3>
+    <p><strong>Açıklama:</strong> {{ product.description }}</p>
+    <p><strong>Fiyat:</strong> {{ product.price }} TL</p>
+    <p><strong>Miktar:</strong> {{ product.quantity }}</p>
+    <p><strong>Kategori:</strong> {{ product.category }}</p>
+    <p><strong>Eklenme Tarihi:</strong> {{ product.created_at }}</p>
+    <a href="{% url 'inventory:edit_product' product.id %}" class="btn btn-warning">Düzenle</a>
+    <form method="post" action="{% url 'inventory:delete_product' product.id %}" class="product-view">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-danger">Ürünü Sil</button>
+    </form>
+</div>
 {% endblock %}
