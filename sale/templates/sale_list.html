@@ -18,7 +18,7 @@
             {% for sale in sales %}
                 <li>
                     <strong>Satış Tarihi:</strong> {{ sale.sale_date }} - 
-                    <strong>Toplam Fiyat:</strong> {{ sale.total_price|floatformat:2 }} TL
+                    <strong>Sepet Tutarı:</strong> {{ sale.total_price|floatformat:2 }} TL
                     <ul>
                         {% for item in sale.items.all %}
                             <li>

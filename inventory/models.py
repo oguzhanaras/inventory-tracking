@@ -35,6 +35,9 @@ class Product(models.Model):
         on_delete=models.CASCADE, 
         help_text="Product category."
     )
+    is_active = models.BooleanField(
+        default=True
+    )
     created_at = models.DateTimeField(
         auto_now_add=True, 
         help_text="Creation timestamp."

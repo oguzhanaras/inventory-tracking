@@ -8,6 +8,7 @@
 
 {% block content %}
 <div class="product-add-container">
+    <a href="{% url 'inventory:product' %}">Geri Dön</a>
     <h1>Yeni Ürün Ekle</h1>
     <form method="post">
         {% csrf_token %}
@@ -40,7 +41,5 @@
 
         <button type="submit" class="btn btn-success">Ürünü Ekle</button>
     </form>
-
-    <a href="{% url 'inventory:product' %}">Geri Dön</a>
 </div>
 {% endblock %}

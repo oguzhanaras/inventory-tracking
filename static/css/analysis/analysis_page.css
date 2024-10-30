@@ -45,6 +45,26 @@
     color: var(--secondary-color);
 }
 
+/* tablolar */
+table {
+    width: 70%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    background-color: #f9f9f9;
+    margin: 0 auto;
+}
+
+th, td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+th {
+    background-color: var(--primary-color);
+    color: white;
+}
+
 /* Grafikler */
 .analysis-page-container canvas {
     max-width: 600px;

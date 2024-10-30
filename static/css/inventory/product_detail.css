@@ -1,12 +1,12 @@
 /* Ürün Detay Kartı */
 .product-details {
     max-width: 600px;
-    background-color: var(--card-background-color); /* Beyaz arka plan */
+    background-color: var(--card-background-color);
     padding: 25px;
     margin: 30px auto;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
-    color: var(--text-color); /* Koyu gri metin */
+    color: var(--text-color);
     font-family: Arial, sans-serif;
 }
 
@@ -32,41 +32,52 @@
 
 /* Butonlar */
 .btn {
-    display: inline-block;
     padding: 10px 20px;
     font-size: 1rem;
     border-radius: 5px;
     text-decoration: none;
     color: #ffffff;
     cursor: pointer;
-    margin-top: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .btn-warning {
-    background-color: var(--primary-color); /* Mavi buton */
+    background-color: var(--primary-color);
     border: none;
     transition: background-color 0.3s, transform 0.2s;
 }
 
 .btn-warning:hover {
-    background-color: var(--link-hover-color); /* Açık mavi hover */
+    background-color: var(--link-hover-color);
     transform: translateY(-2px);
+    color: var(--text-color);
 }
 
 .btn-danger {
-    background-color: #E63946; /* Kırmızı buton */
+    background-color: #E63946;
     border: none;
     transition: background-color 0.3s, transform 0.2s;
-    margin-left: 10px;
 }
 
 .btn-danger:hover {
-    background-color: #D62839; /* Daha koyu kırmızı hover */
+    background-color: #D62839;
     transform: translateY(-2px);
 }
 
-/* Butonların Yan Yana Görünümü */
+/* Butonları yan yana hizalamak ve eşit genişlik sağlamak için */
+.button-group {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.button-group .btn {
+    flex: 1; /* Butonları eşit genişlikte yapar */
+    min-width: 0; /* Butonların taşmasını engeller */
+}
+
 .product-view {
-    display: inline-block;
-    margin-top: 10px;
+    display: contents; /* Formun dış kapsayıcı gibi davranmasını sağlar */
 }

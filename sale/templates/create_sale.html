@@ -16,7 +16,8 @@
                 <tr>
                     <th>Ürün Adı</th>
                     <th>Fiyat</th>
-                    <th>Miktar</th>
+                    <th>Stok Miktarı</th>
+                    <th>Satış Miktarı</th>
                 </tr>
             </thead>
             <tbody>
@@ -24,8 +25,9 @@
                 <tr>
                     <td>{{ product.name }}</td>
                     <td>{{ product.sale_price }} TL</td>
+                    <td>{{ product.quantity }}</td>
                     <td>
-                        <input type="number" name="quantities" min="0" placeholder="Miktar" value="0">
+                        <input type="number" name="quantities" min="0" max="{{ product.quantity }}" placeholder="Miktar" value="0">
                         <input type="hidden" name="products" value="{{ product.id }}">
                     </td>
                 </tr>

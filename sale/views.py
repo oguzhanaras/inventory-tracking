@@ -8,13 +8,13 @@ from django.db import transaction
 
 @login_required
 def sale_list(request):
-    sales = Sale.objects.filter(user=request.user)
+    sales = Sale.objects.filter(user=request.user).order_by('-sale_date')
     return render(request,'sale_list.html', {'sales': sales})
 
 @login_required
 @transaction.atomic
 def create_sale(request):
-    products = Product.objects.filter(owner=request.user)  # Kullanıcının ürünlerini çek
+    products = Product.objects.filter(owner=request.user, is_active=True)  # Sadece aktif ürünleri çek
 
     if request.method == "POST":
         user = request.user

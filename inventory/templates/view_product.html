@@ -14,10 +14,13 @@
     <p><strong>Miktar:</strong> {{ product.quantity }}</p>
     <p><strong>Kategori:</strong> {{ product.category }}</p>
     <p><strong>Eklenme Tarihi:</strong> {{ product.created_at }}</p>
-    <a href="{% url 'inventory:edit_product' product.id %}" class="btn btn-warning">Düzenle</a>
-    <form method="post" action="{% url 'inventory:delete_product' product.id %}" class="product-view">
-        {% csrf_token %}
-        <button type="submit" class="btn btn-danger">Ürünü Sil</button>
-    </form>
+    
+    <div class="button-group">
+        <a href="{% url 'inventory:edit_product' product.id %}" class="btn btn-warning">Düzenle</a>
+        <form method="post" action="{% url 'inventory:delete_product' product.id %}" class="product-view">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-danger">Ürünü Sil</button>
+        </form>
+    </div>
 </div>
 {% endblock %}

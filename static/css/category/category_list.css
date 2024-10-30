@@ -55,6 +55,10 @@
     transition: background-color 0.3s, transform 0.2s;
 }
 
+.category-page-container .cat-title {
+    margin-bottom: 20px;
+}
+
 .category-page-container .btn-primary {
     background-color: var(--primary-color);
     border: none;

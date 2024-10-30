@@ -24,10 +24,19 @@
     margin-bottom: 15px;
 }
 
-/* Buton Stili */
-.category-detail-container a,
-.category-detail-container .btn-delete {
-    display: inline-block;
+/* Buton Grubu */
+.button-group {
+    display: flex;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.button-group a,
+.button-group .btn-danger {
+    flex: 1; /* Her iki butonu eşit genişlikte yapar */
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
     padding: 10px 20px;
     font-size: 1rem;
     border-radius: 5px;
@@ -35,35 +44,30 @@
     color: #ffffff;
     cursor: pointer;
     transition: background-color 0.3s, transform 0.2s;
-    margin-top: 10px;
 }
 
 /* Düzenle Butonu */
-.category-detail-container a {
+.button-group .btn-warning {
     background-color: var(--primary-color);
-    margin-right: 10px;
 }
 
-.category-detail-container a:hover {
+.button-group .btn-warning:hover {
     background-color: var(--link-hover-color);
     transform: translateY(-2px);
 }
 
 /* Silme Butonu */
-.category-detail-container .btn-delete {
+.button-group .btn-danger {
     background-color: #E63946;
     border: none;
 }
 
-.category-detail-container .btn-delete:hover {
+.button-group .btn-danger:hover {
     background-color: #D62839;
     transform: translateY(-2px);
 }
 
-/* Kategori Bulunamadı Mesajı */
-.category-detail-container .not-found {
-    color: var(--secondary-color);
-    font-size: 1rem;
-    text-align: center;
-    margin-top: 20px;
+/* Formu içeriğe dahil etmek için */
+.category-view {
+    display: contents;
 }

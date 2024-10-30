@@ -2,7 +2,69 @@
 
 {% block title %}Giriş Yap{% endblock %}  <!-- Başlık bloğu -->
 
+{% block custom_css %}
+<style>
+    .login-container {
+        max-width: 400px;
+        margin: 50px auto;
+        padding: 20px;
+        background-color: #f9f9f9;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        text-align: center;
+    }
+
+    .login-container h1 {
+        color: var(--primary-color);
+        font-size: 2rem;
+        margin-bottom: 20px;
+    }
+
+    .login-container .alert {
+        padding: 10px;
+        background-color: #ffdddd;
+        color: #d8000c;
+        margin-bottom: 15px;
+        border: 1px solid #d8000c;
+        border-radius: 5px;
+    }
+
+    .login-container form {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .login-container button {
+        padding: 10px;
+        background-color: var(--primary-color);
+        color: #fff;
+        font-weight: bold;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+
+    .login-container button:hover {
+        background-color: var(--link-hover-color);
+    }
+
+    .login-container p {
+        margin-top: 15px;
+        color: var(--text-color);
+    }
+
+    .login-container a {
+        color: var(--primary-color);
+        text-decoration: underline;
+        font-weight: bold;
+    }
+</style>
+{% endblock custom_css %}
+
 {% block content %}
+<div class="login-container">
     <h1>Giriş Yap</h1>
     {% if messages %}
         {% for message in messages %}
@@ -18,4 +80,5 @@
     <p>
         Henüz kaydolmadıysanız, <a href="{% url 'users:register' %}">Kayıt Ol</a>
     </p>  <!-- Kayıt sayfasına yönlendirme -->
+</div>
 {% endblock %}

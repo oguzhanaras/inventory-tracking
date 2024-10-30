@@ -30,6 +30,7 @@
 .btn:hover {
     background-color: var(--link-hover-color);
     transform: translateY(-3px);
+    color: var(--text-color);
 }
 
 /* Ürün Listesi */
@@ -91,6 +92,7 @@
     font-size: 0.95rem;
     color: var(--text-color);
     margin: 5px 0;
+    z-index: 1;
 }
 
 .no-products {

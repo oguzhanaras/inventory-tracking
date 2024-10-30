@@ -28,7 +28,7 @@ def login_view(request):
             user = authenticate(username=username, password=password)
             if user is not None:
                 login(request, user)
-                return redirect('product:index')
+                return redirect('inventory:index')
             else:
                 messages.error(request, "Kullanıcı adı veya şifre hatalı.")
         else:

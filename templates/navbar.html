@@ -15,7 +15,7 @@
                 <li><a href="{% url 'analysis:user_analysis' %}">Analiz</a></li>
                 {% if user.is_authenticated %}
                     <li class="auth-links">
-                        <span>Hoş geldin, {{ user.username }}!</span>
+                        <span>{{ user.username }}</span>
                         <form method="POST" action="{% url 'logout' %}">
                             {% csrf_token %}
                             <button type="submit" class="logout-button">Çıkış Yap</button>

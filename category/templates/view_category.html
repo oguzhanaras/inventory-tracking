@@ -13,12 +13,13 @@
         <p><strong>Kategori Adı:</strong> {{ category.name }}</p>
         <p><strong>Açıklama:</strong> {{ category.description }}</p>
 
-        <a href="{% url 'category:update' category.id %}" class="btn-edit">Düzenle</a>
-
-        <form method="post" action="{% url 'category:delete' category.id %}" style="display: inline;">
-            {% csrf_token %}
-            <button type="submit" class="btn-delete">Kategoriyi Sil</button>
-        </form>
+        <div class="button-group">
+            <a href="{% url 'category:update' category.id %}" class="btn btn-warning">Düzenle</a>
+            <form method="post" action="{% url 'category:delete' category.id %}" class="category-view">
+                {% csrf_token %}
+                <button type="submit" class="btn btn-danger">Ürünü Sil</button>
+            </form>
+        </div>
     {% else %}
         <p class="not-found">Kategori bulunamadı</p>
     {% endif %}

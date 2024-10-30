@@ -2,7 +2,87 @@
 
 {% block title %}Kayıt Ol{% endblock %}  <!-- Başlık bloğu -->
 
+{% block custom_css %}
+<style>
+    .register-container {
+        max-width: 400px;
+        margin: 50px auto;
+        padding: 20px;
+        background-color: #f9f9f9;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        text-align: center;
+    }
+
+    .register-container h1 {
+        color: var(--primary-color);
+        font-size: 2rem;
+        margin-bottom: 20px;
+    }
+
+    .register-container .alert {
+        padding: 10px;
+        background-color: #ffdddd;
+        color: #d8000c;
+        margin-bottom: 15px;
+        border: 1px solid #d8000c;
+        border-radius: 5px;
+    }
+
+    .register-container form {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .register-container button {
+        padding: 10px;
+        background-color: var(--primary-color);
+        color: #fff;
+        font-weight: bold;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+
+    .register-container button:hover {
+        background-color: var(--link-hover-color);
+    }
+
+    .register-container p {
+        margin-top: 15px;
+        color: var(--text-color);
+    }
+
+    .register-container a {
+        color: var(--primary-color);
+        text-decoration: underline;
+        font-weight: bold;
+    }
+
+    .register-container input[type="text"],
+    .register-container input[type="password"],
+    .register-container input[type="email"] {
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        font-size: 1rem;
+        transition: border-color 0.3s, box-shadow 0.3s;
+    }
+
+    .register-container input[type="text"]:focus,
+    .register-container input[type="password"]:focus,
+    .register-container input[type="email"]:focus {
+        border-color: var(--primary-color);
+        box-shadow: 0 0 5px rgba(123, 154, 204, 0.2);
+        outline: none;
+    }
+</style>
+{% endblock custom_css %}
+
 {% block content %}
+<div class="register-container">
     <h1>Kayıt Ol</h1>
     {% if messages %}
         {% for message in messages %}
@@ -17,4 +97,5 @@
     <p>
         Zaten kaydolduysanız, <a href="{% url 'users:login' %}">Giriş Yap</a>
     </p>  <!-- Giriş sayfasına yönlendirme -->
+</div>
 {% endblock %}

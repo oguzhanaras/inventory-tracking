@@ -23,8 +23,13 @@
     </div>
 
     <div class="form-group">
-        <label for="price">Fiyat (TL):</label>
-        <input type="number" id="price" name="price" class="form-control" step="0.01" value="{{ product.price }}" required>
+        <label for="cost_price">Maliyet Fiyatı (TL):</label>
+        <input type="number" id="cost_price" name="cost_price" class="form-control" step="0.01" value="{{ product.cost_price }}" required>
+    </div>
+
+    <div class="form-group">
+        <label for="sale_price">Satış Fiyatı (TL):</label>
+        <input type="number" id="sale_price" name="sale_price" class="form-control" step="0.01" value="{{ product.sale_price }}" required>
     </div>
 
     <div class="form-group">
