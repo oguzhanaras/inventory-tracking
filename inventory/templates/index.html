@@ -8,8 +8,9 @@
 
 {% block content %}
 <div class="home-page-container">
-    <h1>Hoşgeldiniz, {{ user.username }}!</h1>
-    
+    <h1>
+        Hoşgeldiniz{% if user.is_authenticated %}, {{ user.username }}{% endif %}
+    </h1>
     <!-- Kısa Tanıtım -->
     <p>Inventoria, envanterinizi kolayca takip edebileceğiniz, satış ve finansal analizlerinizi görüntüleyebileceğiniz kapsamlı bir envanter yönetim uygulamasıdır. Ürünlerinizi düzenleyin, satış performansınızı analiz edin ve kârınızı artırın!</p>
 

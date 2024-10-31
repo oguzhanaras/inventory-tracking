@@ -20,6 +20,7 @@
         margin-bottom: 20px;
     }
 
+    /* Uyarı Mesajı Stili */
     .register-container .alert {
         padding: 10px;
         background-color: #ffdddd;
@@ -29,13 +30,57 @@
         border-radius: 5px;
     }
 
+    /* Form Yapısı */
     .register-container form {
         display: flex;
         flex-direction: column;
+        align-items: flex-start; /* Aynı hizada olması için sola hizalanır */
         gap: 15px;
     }
 
+    .register-container label {
+        font-weight: bold;
+        color: var(--text-color);
+        align-self: flex-start;
+        margin-bottom: -5px;
+    }
+
+    /* Input Alanları */
+    .register-container input[type="text"],
+    .register-container input[type="password"],
+    .register-container input[type="email"] {
+        width: 100%; /* Tüm inputlar aynı genişlikte */
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        font-size: 1rem;
+        color: var(--text-color);
+        background-color: #fff;
+        transition: border-color 0.3s, box-shadow 0.3s;
+    }
+
+    .register-container input[type="text"]:focus,
+    .register-container input[type="password"]:focus,
+    .register-container input[type="email"]:focus {
+        border-color: var(--primary-color);
+        box-shadow: 0 0 5px rgba(0, 123, 255, 0.3);
+        outline: none;
+    }
+
+    /* Bilgilendirme Metni (help_text) Liste Stili */
+    .register-container ul.helptext-list {
+        font-size: 0.9rem;
+        color: #6c757d;
+        list-style-type: disc;
+        margin-top: -10px;
+        padding-left: 20px;
+        text-align: left;
+        align-self: flex-start;
+    }
+
+    /* Kayıt Ol Butonu */
     .register-container button {
+        width: 100%;
         padding: 10px;
         background-color: var(--primary-color);
         color: #fff;
@@ -50,6 +95,7 @@
         background-color: var(--link-hover-color);
     }
 
+    /* Alt Mesaj ve Link */
     .register-container p {
         margin-top: 15px;
         color: var(--text-color);
@@ -59,24 +105,6 @@
         color: var(--primary-color);
         text-decoration: underline;
         font-weight: bold;
-    }
-
-    .register-container input[type="text"],
-    .register-container input[type="password"],
-    .register-container input[type="email"] {
-        padding: 10px;
-        border: 1px solid #ccc;
-        border-radius: 5px;
-        font-size: 1rem;
-        transition: border-color 0.3s, box-shadow 0.3s;
-    }
-
-    .register-container input[type="text"]:focus,
-    .register-container input[type="password"]:focus,
-    .register-container input[type="email"]:focus {
-        border-color: var(--primary-color);
-        box-shadow: 0 0 5px rgba(123, 154, 204, 0.2);
-        outline: none;
     }
 </style>
 {% endblock custom_css %}
@@ -91,11 +119,29 @@
     {% endif %}
     <form method="POST">
         {% csrf_token %}
-        {{ form.as_p }}  <!-- Formu paragraflar halinde görüntüle -->
+        
+        <label for="id_username">Username</label>
+        <input type="text" id="id_username" name="username">
+        <ul class="helptext-list">
+            <li>Required.</li>
+            <li>150 characters or fewer.</li>
+            <li>Letters, digits and @/./+/-/_ only.</li>
+        </ul>
+
+        <label for="id_password">Password</label>
+        <input type="password" id="id_password" name="password">
+        <ul class="helptext-list">
+            <li>8 characters minimum.</li>
+            <li>At least one uppercase letter and number.</li>
+        </ul>
+
+        <label for="id_email">Email Address</label>
+        <input type="email" id="id_email" name="email">
+
         <button type="submit">Kayıt Ol</button>
     </form>
     <p>
         Zaten kaydolduysanız, <a href="{% url 'users:login' %}">Giriş Yap</a>
-    </p>  <!-- Giriş sayfasına yönlendirme -->
+    </p>
 </div>
 {% endblock %}

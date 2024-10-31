@@ -11,15 +11,16 @@
         background-color: #f9f9f9;
         border-radius: 8px;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        text-align: center;
     }
 
     .login-container h1 {
         color: var(--primary-color);
         font-size: 2rem;
         margin-bottom: 20px;
+        text-align: center;
     }
 
+    /* Uyarı Mesajı Stili */
     .login-container .alert {
         padding: 10px;
         background-color: #ffdddd;
@@ -29,13 +30,44 @@
         border-radius: 5px;
     }
 
+    /* Form Yapısı */
     .login-container form {
         display: flex;
         flex-direction: column;
+        align-items: flex-start;
         gap: 15px;
     }
 
+    .login-container label {
+        font-weight: bold;
+        color: var(--text-color);
+        align-self: flex-start;
+        margin-bottom: -5px;
+    }
+
+    /* Input Alanları */
+    .login-container input[type="text"],
+    .login-container input[type="password"] {
+        width: 100%; /* Tüm inputlar aynı genişlikte */
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        font-size: 1rem;
+        color: var(--text-color);
+        background-color: #fff;
+        transition: border-color 0.3s, box-shadow 0.3s;
+    }
+
+    .login-container input[type="text"]:focus,
+    .login-container input[type="password"]:focus {
+        border-color: var(--primary-color);
+        box-shadow: 0 0 5px rgba(0, 123, 255, 0.3);
+        outline: none;
+    }
+
+    /* Giriş Yap Butonu */
     .login-container button {
+        width: 100%;
         padding: 10px;
         background-color: var(--primary-color);
         color: #fff;
@@ -50,6 +82,7 @@
         background-color: var(--link-hover-color);
     }
 
+    /* Alt Mesaj ve Link */
     .login-container p {
         margin-top: 15px;
         color: var(--text-color);
@@ -63,6 +96,7 @@
 </style>
 {% endblock custom_css %}
 
+
 {% block content %}
 <div class="login-container">
     <h1>Giriş Yap</h1>
@@ -74,11 +108,25 @@
 
     <form method="POST">
         {% csrf_token %}
-        {{ form.as_p }}  <!-- Formu paragraflar halinde görüntüle -->
+        
+        <label for="id_username">Username</label>
+        <input type="text" id="id_username" name="username">
+        <ul class="helptext-list">
+            <li>Required field.</li>
+            <li>Letters, digits, and @/./+/-/_ allowed only.</li>
+        </ul>
+
+        <label for="id_password">Password</label>
+        <input type="password" id="id_password" name="password">
+        <ul class="helptext-list">
+            <li>Must be at least 8 characters.</li>
+            <li>Include letters and numbers.</li>
+        </ul>
+
         <button type="submit">Giriş Yap</button>
     </form>
     <p>
         Henüz kaydolmadıysanız, <a href="{% url 'users:register' %}">Kayıt Ol</a>
-    </p>  <!-- Kayıt sayfasına yönlendirme -->
+    </p>
 </div>
 {% endblock %}
