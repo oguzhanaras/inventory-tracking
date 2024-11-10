@@ -22,7 +22,7 @@
 
 .analysis-page-container h2 {
     font-size: 1.6rem;
-    margin-top: 30px;
+    margin: 40px;
 }
 
 /* Bilgi Kartları */
@@ -45,6 +45,17 @@
     color: var(--secondary-color);
 }
 
+.btn {
+    margin-top: 10px;
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: var(--primary-color);
+    color: #ffffff;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
 /* tablolar */
 table {
     width: 70%;
@@ -65,12 +76,17 @@ th {
     color: white;
 }
 
-/* Grafikler */
-.analysis-page-container canvas {
-    max-width: 600px;
-    height: 400px;
-    margin: 20px auto;
-    display: block;
-    border-radius: 8px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+canvas {
+    max-height: 600px;
+}
+
+@media (max-width: 700px) {
+    /* tablolar */
+    table {
+        width: 90%;
+    }
+
+    .analysis-page-container h2 {
+        font-size: 1.2rem;
+    }
 }

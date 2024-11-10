@@ -10,98 +10,106 @@
 <div class="analysis-page-container">
     <h1>Finansal Analizler</h1>
 
-    <div>
-        <p><strong>Toplam Satış Sayısı:</strong> {{ total_sales_count }}</p>
-        <p><strong>Toplam Gelir:</strong> {{ total_revenue }}</p>
-        <p><strong>Toplam Satış Maliyeti:</strong> {{ total_cost }}</p>
-        <p><strong>Kar Oranı:</strong> {{ profit_margin }}%</p>
-        <p><strong>Müşteri Başına Ortalama Sipariş Değeri:</strong> {{ average_order_value|floatformat:3 }} TL</p>
-        <p><strong>Aylık Büyüme Oranı:</strong> {{ growth_rate|floatformat:3 }}%</p>
-        <p><strong>Stok Dönüşüm Hızı:</strong> {{ turnover_rate|floatformat:3 }}</p>
-    </div>
+    {% if total_sales_count > 0 %}
+        <div>
+            <p><strong>Toplam Satış Sayısı:</strong> {{ total_sales_count }}</p>
+            <p><strong>Toplam Gelir:</strong> {{ total_revenue }}</p>
+            <p><strong>Toplam Satış Maliyeti:</strong> {{ total_cost }}</p>
+            <p><strong>Kar Oranı:</strong> {{ profit_margin }}%</p>
+            <p><strong>Müşteri Başına Ortalama Sipariş Değeri:</strong> {{ average_order_value|floatformat:3 }} TL</p>
+            <p><strong>Aylık Büyüme Oranı:</strong> {{ growth_rate|floatformat:3 }}%</p>
+            <p><strong>Stok Dönüşüm Hızı:</strong> {{ turnover_rate|floatformat:3 }}</p>
+        </div>
 
-    <h2>En Çok Satılan Ürünler</h2>
-    <table>
-        <thead>
-            <tr>
-                <th>Ürün Adı</th>
-                <th>Satış Adedi</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for product in top_selling_products %}
+        <h2>En Çok Satılan Ürünler</h2>
+        <table>
+            <thead>
                 <tr>
-                    <td>{{ product.product__name }}</td>
-                    <td>{{ product.total_sold }} adet</td>
+                    <th>Ürün Adı</th>
+                    <th>Satış Adedi</th>
                 </tr>
-            {% endfor %}
-        </tbody>
-    </table>
+            </thead>
+            <tbody>
+                {% for product in top_selling_products %}
+                    <tr>
+                        <td>{{ product.product__name }}</td>
+                        <td>{{ product.total_sold }} adet</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
 
-    <h2>En Az Satılan Ürünler</h2>
-    <table>
-        <thead>
-            <tr>
-                <th>Ürün Adı</th>
-                <th>Satış Adedi</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for product in low_selling_products %}
+        <h2>En Az Satılan Ürünler</h2>
+        <table>
+            <thead>
                 <tr>
-                    <td>{{ product.product__name }}</td>
-                    <td>{{ product.total_sold }} adet</td>
+                    <th>Ürün Adı</th>
+                    <th>Satış Adedi</th>
                 </tr>
-            {% endfor %}
-        </tbody>
-    </table>
+            </thead>
+            <tbody>
+                {% for product in low_selling_products %}
+                    <tr>
+                        <td>{{ product.product__name }}</td>
+                        <td>{{ product.total_sold }} adet</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
 
-    <h2>En Yüksek Gelir Getiren Ürünler</h2>
-    <table>
-        <thead>
-            <tr>
-                <th>Ürün Adı</th>
-                <th>Toplam Gelir</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for product in top_revenue_products %}
+        <h2>En Yüksek Gelir Getiren Ürünler</h2>
+        <table>
+            <thead>
                 <tr>
-                    <td>{{ product.product__name }}</td>
-                    <td>{{ product.total_revenue }} TL</td>
+                    <th>Ürün Adı</th>
+                    <th>Toplam Gelir</th>
                 </tr>
-            {% endfor %}
-        </tbody>
-    </table>
+            </thead>
+            <tbody>
+                {% for product in top_revenue_products %}
+                    <tr>
+                        <td>{{ product.product__name }}</td>
+                        <td>{{ product.total_revenue }} TL</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
 
-    <h2>Düşük Stoklu Ürünler</h2>
-    <table>
-        <thead>
-            <tr>
-                <th>Ürün Adı</th>
-                <th>Stok Adedi</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for product in low_stock_products %}
-                <tr>
-                    <td>{{ product.name }}</td>
-                    <td>{{ product.quantity }} adet</td>
-                </tr>
-            {% endfor %}
-        </tbody>
-    </table>
+        <h2>Düşük Stoklu Ürünler</h2>
+        {% if low_stock_products %}
+            <table>
+                <thead>
+                    <tr>
+                        <th>Ürün Adı</th>
+                        <th>Stok Adedi</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for product in low_stock_products %}
+                        <tr>
+                            <td>{{ product.name }}</td>
+                            <td>{{ product.quantity }} adet</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        {% else %}
+        <p>Henüz düşük stoklu ürününüz yok</p>
+        {% endif %}
 
-    <h2>Kategori Bazında Satış Dağılımı</h2>
-    <canvas id="categoryChart" width="400" height="200"></canvas>
+        <h2>Kategori Bazında Satış Dağılımı</h2>
+        <canvas id="categoryChart"></canvas>
 
-    <h2>Aylık Kar Grafiği</h2>
-    <canvas id="profitChart" width="400" height="200"></canvas>
+        <h2>Aylık Kar Grafiği</h2>
+        <canvas id="profitChart"></canvas>
 
-    <h2>Günlük Kar Grafiği (Son 7 Gün)</h2>
-    <canvas id="dailyProfitChart" width="400" height="200"></canvas>
+        <h2>Günlük Kar Grafiği (Son 7 Gün)</h2>
+        <canvas id="dailyProfitChart"></canvas>
+    {% else %}
+        <p>Analizleri görüntülemek için lütfen satış yapın</p>
+        <a href="{% url 'sales:create_sale' %}" class="btn">Satış Yap</a>
+    {% endif %}
 </div>
-
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script>

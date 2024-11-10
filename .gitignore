@@ -1,1 +1,34 @@
+# Python derleyici dosyaları
+*.pyc
+__pycache__/
+*.pyo
+*.pyd
+*.pdb
+*.pki
+
+# Sanal ortam klasörü
+venv/
+env/
+
+# Ortam değişkenleri dosyası
 .env
+
+# Django statik ve medya dosyaları
+staticfiles/
+media/
+
+_db
+
+# Django migration dosyaları (opsiyonel)
+**/migrations/*.py
+!**/migrations/__init__.py
+
+# IDE ve editör dosyaları
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# MacOS, Linux ve Windows işletim sistemi dosyaları
+.DS_Store
+Thumbs.db

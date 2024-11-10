@@ -15,10 +15,10 @@
     {% if products %}
         {% for product in products %}
             <div class="product-card">
-                <div class="product-image">
+                {% comment %} <div class="product-image">
                     <!-- Placeholder for product image -->
                     <img src="{% static 'images/product-placeholder.png' %}" alt="{{ product.name }}">
-                </div>
+                </div> {% endcomment %}
                 <h2 class="product-name">{{ product.name }}</h2>
                 <p class="product-description">Açıklama: {{ product.description }}</p>
                 <p><strong>Maliyet Fiyatı:</strong> {{ product.cost_price }} TL</p>

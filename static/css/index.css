@@ -45,10 +45,12 @@
 }
 
 .quick-links .btn {
-    display: inline-block;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     padding: 10px 20px;
     background-color: var(--primary-color);
-    color: #ffffff;
+    color: var(--text-color);
     text-decoration: none;
     border-radius: 5px;
     transition: background-color 0.3s;
@@ -56,4 +58,17 @@
 
 .quick-links .btn:hover {
     background-color: var(--link-hover-color);
+}
+
+
+@media (max-width: 546px) {
+    .quick-links .btn {
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 450px) {
+    .quick-links .btn {
+        font-size: 10px;
+    }
 }
