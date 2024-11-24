@@ -1,4 +1,5 @@
 # Envanter Takip Uygulaması
+inventoria.4ras.dev
 
 Bu uygulama, kullanıcıların envanterlerini yönetmelerini sağlar. Ürün ekleme, düzenleme, silme işlemlerini yapabilir; satış ve stok takibi ile analizler sağlayabilirsiniz.
 
