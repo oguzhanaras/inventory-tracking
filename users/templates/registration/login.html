@@ -20,14 +20,27 @@
         text-align: center;
     }
 
-    /* Uyarı Mesajı Stili */
-    .login-container .alert {
+    .alert {
         padding: 10px;
-        background-color: #ffdddd;
-        color: #d8000c;
         margin-bottom: 15px;
-        border: 1px solid #d8000c;
         border-radius: 5px;
+        border: 1px solid transparent;
+        text-align: left;
+        font-weight: bold;
+    }
+
+    /* Başarı Mesajı */
+    .alert-success {
+        background-color: #ccffcc;
+        color: #006400;
+        border-color: #00b300;
+    }
+
+    /* Hata Mesajı */
+    .alert-error {
+        background-color: #ffcccc;
+        color: #d8000c;
+        border-color: #ff0000;
     }
 
     /* Form Yapısı */
@@ -102,7 +115,7 @@
     <h1>Giriş Yap</h1>
     {% if messages %}
         {% for message in messages %}
-            <div class="alert">{{ message }}</div>
+            <div class="alert alert-{{ message.tags }}">{{ message }}</div>
         {% endfor %}
     {% endif %}
 
@@ -130,3 +143,19 @@
     </p>
 </div>
 {% endblock %}
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    const alerts = document.querySelectorAll('.alert');
+    alerts.forEach(function (alert) {
+        const messageType = alert.getAttribute('data-message');
+        if (messageType.includes('success')) {
+            alert.style.backgroundColor = '#ccffcc'; // Başarı mesajları için yeşil arka plan
+            alert.style.color = '#006400';
+        } else if (messageType.includes('error')) {
+            alert.style.backgroundColor = '#ffcccc'; // Hata mesajları için kırmızı arka plan
+            alert.style.color = '#d8000c';
+        }
+    });
+});
+</script>
